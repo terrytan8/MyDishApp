@@ -34,7 +34,11 @@ import com.example.favdish.viewmodel.FavDishViewModelFactory
 
 class AllDishesFragment : Fragment() {
 
+
   private lateinit var mBinding:FragmentAllDishesBinding
+
+  private lateinit var mFavDishAdapter:FavDishAdapter
+  private lateinit var mCustomListDialog:Dialog
 
   private val mFavDishViewModel: FavDishViewModel by viewModels {
     FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
@@ -69,6 +73,7 @@ private var _binding: FragmentAllDishesBinding? = null
    mBinding.rvDishesList.layoutManager = GridLayoutManager(requireActivity(),2)
 
    val favDishAdapter = FavDishAdapter(this)
+     mFavDishAdapter = favDishAdapter
    mBinding.rvDishesList.adapter = favDishAdapter
 
 
@@ -79,7 +84,7 @@ private var _binding: FragmentAllDishesBinding? = null
           {
             mBinding.rvDishesList.visibility= View.VISIBLE
             mBinding.tvNoDishesAddedYet.visibility = View.GONE
-            favDishAdapter.dishesList(it)
+            mFavDishAdapter.dishesList(it)
 
           }else{
             mBinding.rvDishesList.visibility= View.GONE
@@ -121,18 +126,18 @@ private var _binding: FragmentAllDishesBinding? = null
     }
 
     private fun filterDishesListDialog(){
-        val customListDialog= Dialog(requireActivity())
+       mCustomListDialog= Dialog(requireActivity())
         val binding:DialogCustomListBinding= DialogCustomListBinding.inflate(layoutInflater)
 
-        customListDialog.setContentView(binding.root)
+        mCustomListDialog.setContentView(binding.root)
         binding.tvTitle.text = resources.getString(R.string.title_select_item_to_filter)
 
         val dishTypes = Constants.dishTypes()
         dishTypes.add(0,Constants.ALL_ITEMS)
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
-        val adapter = CustomListItemAdapter(requireActivity(),dishTypes,Constants.FILTER_SELECTION)
+        val adapter = CustomListItemAdapter(requireActivity(),this,dishTypes,Constants.FILTER_SELECTION)
         binding.rvList.adapter = adapter
-        customListDialog.show()
+        mCustomListDialog.show()
     }
 
     override fun onResume() {
@@ -160,6 +165,32 @@ private var _binding: FragmentAllDishesBinding? = null
     }
     return super.onOptionsItemSelected(item)
   }
+
+    fun filterSelection(filterItemSelection:String){
+        mCustomListDialog.dismiss()
+        Log.i("Tag",filterItemSelection)
+
+        if(filterItemSelection==Constants.ALL_ITEMS){
+            mFavDishViewModel.allDishList.observe(viewLifecycleOwner){
+                    dishes->
+                dishes.let {
+                    if(it.isNotEmpty())
+                    {
+                        mBinding.rvDishesList.visibility= View.VISIBLE
+                        mBinding.tvNoDishesAddedYet.visibility = View.GONE
+                        mFavDishAdapter.dishesList(it)
+
+                    }else{
+                        mBinding.rvDishesList.visibility= View.GONE
+                        mBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
+                    }
+                }
+
+            }
+        }else{
+            Log.i("TAG","FILTER LIST")
+        }
+    }
 
 override fun onDestroyView() {
         super.onDestroyView()

@@ -455,7 +455,7 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
         mCustomListDialog.setContentView(binding.root)
         binding.tvTitle.text = title
         binding.rvList.layoutManager = LinearLayoutManager(this)
-        val adapter= CustomListItemAdapter(this,itemList,selection)
+        val adapter= CustomListItemAdapter(this,null,itemList,selection)
         binding.rvList.adapter = adapter
         mCustomListDialog.show()
     }
