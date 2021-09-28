@@ -70,7 +70,9 @@ class FavDishAdapter(private val fragment:Fragment):RecyclerView.Adapter<FavDish
                     fragment.requireActivity().startActivity(intent)
 
                 }else if(it.itemId == R.id.action_delete_dish){
-                    Log.i("TAG","CLICK DELETE")
+                    if(fragment is AllDishesFragment){
+                        fragment.deleteDish(dish)
+                    }
                 }
                 true
             }
