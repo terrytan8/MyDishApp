@@ -42,4 +42,6 @@
     <string name="msg_add_to_favourite">Add to favourite Sucessfully</string>
     <string name="msg_add_to_unfavourite">Remove from Favourite</string>
     <string name="label_no_favourite_dishes_add_yet">No favourite dishes added yet ...</string>
+    <string name="action_edit_dish">EDIT DISH</string>
+    <string name="action_delete_dish">DELETE DISH</string>
 </resources>
