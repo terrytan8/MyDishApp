@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">FavDish</string>
+    <string name="title_all_dishes">All Dishes</string>
+    <string name="title_favourite_dishes">Favourite</string>
+    <string name="title_random_dish">Random Dish</string>
+    <string name="splash_screen_title">MyDish</string>
+    <string name="add_dish">Add Dishes</string>
+    <string name="image_contentDescription">Image Description</string>
+
+    <string name="lbl_title">Title</string>
+    <string name="lbl_type">Type</string>
+    <string name="lbl_category">Category</string>
+    <string name="lbl_ingredients">Ingredients</string>
+    <string name="lbl_cooking_time_in_minutes">Cooking Time In Minutes</string>
+    <string name="lbl_direction_to_cook">Direction To Cook</string>
+    <string name="lbl_add_dish">ADD DISH</string>
+
+    <string name="title_select_image_action">Select Image Action</string>
+    <string name="lbl_camera">Camera</string>
+    <string name="lbl_gallery">Gallery</string>
+    <string name="title_select_image">Select Image</string>
+    <string name="permission_failed">It looks like you have turned of the permission
+     required for this features. It can be enabled under Application settings</string>
+    <string name="go_to_setting">GO TO SETTINGS</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_select_dish_type">Select Dish Type</string>
+    <string name="title_select_dish_category">Select Dish Category</string>
+    <string name="title_select_dish_cooking_time">Select Dish Cooking Time</string>
+
+    <string name="err_msg_select_dish_image">Please select a image for dish</string>
+    <string name="err_msg_enter_dish_title">Enter dish title.</string>
+    <string name="err_msg_select_dish_type">Select dish type.</string>
+    <string name="err_msg_select_dish_category">Select dish category.</string>
+    <string name="err_msg_enter_dish_ingredients">Enter dish ingredients.</string>
+    <string name="err_msg_select_dish_cooking_time">Select dish cooking time.</string>
+    <string name="err_msg_enter_dish_cooking_instructions">Enter dish cooking instructions.</string>
+    <string name="label_no_dishes_edit_yet">No dishes Added yet ...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dish_details">Dish Details</string>
+    <string name="lbl_estimate_cooking_time">"The approx time required to cook the dish is %1$s minutes."</string>
+    <string name="msg_add_to_favourite">Add to favourite Sucessfully</string>
+    <string name="msg_add_to_unfavourite">Remove from Favourite</string>
+    <string name="label_no_favourite_dishes_add_yet">No favourite dishes added yet ...</string>
+</resources>
