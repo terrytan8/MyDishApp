@@ -32,6 +32,7 @@ import com.example.favdish.viewmodel.AllDishesViewModel
 import com.example.favdish.viewmodel.FavDishViewModel
 import com.example.favdish.viewmodel.FavDishViewModelFactory
 
+
 class AllDishesFragment : Fragment() {
 
 
@@ -41,7 +42,7 @@ class AllDishesFragment : Fragment() {
   private lateinit var mCustomListDialog:Dialog
 
   private val mFavDishViewModel: FavDishViewModel by viewModels {
-    FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
+      FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
   }
 
 private var _binding: FragmentAllDishesBinding? = null
@@ -188,7 +189,19 @@ private var _binding: FragmentAllDishesBinding? = null
 
             }
         }else{
-            Log.i("TAG","FILTER LIST")
+            mFavDishViewModel.getFilteredList(filterItemSelection).observe(viewLifecycleOwner){
+                dishes->
+                dishes.let {
+                    if(it.isNotEmpty()){
+                        mBinding.rvDishesList.visibility =View.VISIBLE
+                        mBinding.tvNoDishesAddedYet.visibility= View.GONE
+                        mFavDishAdapter.dishesList(it)
+                    }else{
+                        mBinding.rvDishesList.visibility =View.GONE
+                        mBinding.tvNoDishesAddedYet.visibility= View.VISIBLE
+                    }
+                }
+            }
         }
     }
 
