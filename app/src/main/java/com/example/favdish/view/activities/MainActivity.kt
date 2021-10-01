@@ -10,8 +10,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.*
 import com.example.favdish.R
 import com.example.favdish.databinding.ActivityMainBinding
+import com.example.favdish.model.notification.NotifyWorker
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +37,25 @@ private lateinit var mNavController: NavController
         ))
         setupActionBarWithNavController(mNavController, appBarConfiguration)
         binding.navView.setupWithNavController(mNavController)
+        startWork()
     }
+
+    private fun createConstraints()=
+         Constraints.Builder().setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+             .setRequiresBatteryNotLow(true)
+             .setRequiresCharging(false)
+             .build()
+
+    private fun createWorkRequest()= PeriodicWorkRequestBuilder<NotifyWorker>(15,TimeUnit.MINUTES)
+        .setConstraints(createConstraints())
+        .build()
+
+    private fun startWork(){
+        WorkManager.getInstance(this)
+            .enqueueUniquePeriodicWork("FavDish Notify Work",
+            ExistingPeriodicWorkPolicy.KEEP,createWorkRequest())
+    }
+
     //Click back button can navigate back
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(mNavController,null)
