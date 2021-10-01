@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/favorite_button_background.xml" value="0.1" />
+        <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/food_logo_icon.xml" value="0.1" />
+        <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/ic_add.xml" value="0.1" />
+        <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/ic_all_dishes.xml" value="0.1" />
         <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/ic_favorite_dish.xml" value="0.1" />
         <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/ic_favorite_selected.xml" value="0.14375" />
         <entry key="..\:/Users/Predator Helios/AndroidStudioProjects/FavDish/app/src/main/res/drawable/ic_favorite_unselected.xml" value="0.14375" />
