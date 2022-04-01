@@ -4,8 +4,8 @@ My dish app is an application that can create your own favourite dish, or random
 User can also make the dish as favourite dishes.
 
 ## Sreenshot
-![](.drawable/favfood.png)
 
+![foodinfo](https://user-images.githubusercontent.com/72716751/161260397-b97f49a8-8427-421f-8e5f-82bc83709618.png)
 
 
 
